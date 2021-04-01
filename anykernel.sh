@@ -4,12 +4,18 @@
 ## AnyKernel setup
 # begin properties
 properties() { '
+kernel.string=Rave by Peppe289
 do.devicecheck=1
-do.modules=0
+do.modules=1
+do.systemless=0
 do.cleanup=1
 do.cleanuponabort=0
-device.name1=lavender
-supported.versions=9 - 11
+device.name1=ginkgo
+device.name2=willow
+device.name3=
+device.name4=
+device.name5=
+supported.versions=10 - 11
 supported.patchlevels=
 '; } # end properties
 
@@ -25,15 +31,12 @@ ramdisk_compression=auto;
 
 
 ## AnyKernel file attributes
+# set permissions/ownership for included ramdisk files
+set_perm_recursive 0 0 755 644 $ramdisk/*;
+set_perm_recursive 0 0 750 750 $ramdisk/init* $ramdisk/sbin;
 
 
 ## AnyKernel install
 dump_boot;
-
-# begin ramdisk changes
-
-
-# end ramdisk changes
-
 write_boot;
 ## end install
